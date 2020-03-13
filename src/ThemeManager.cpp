@@ -1456,6 +1456,13 @@ public:
 		return 1;
 	}
 
+	static int ReloadLanguageMod(T* p, lua_State* L)
+	{
+		RString language_name = SArg(1);
+		THEME->SwitchThemeAndLanguage(THEME->GetCurThemeName(), language_name, false, true);
+		return 0;
+	}
+
 	LunaThemeManager()
 	{
 		ADD_METHOD( ReloadMetrics );
@@ -1484,6 +1491,7 @@ public:
 		ADD_METHOD( GetStringNamesInGroup );
 		ADD_METHOD( SetTheme );
 		ADD_METHOD(get_theme_fallback_list);
+		ADD_METHOD(ReloadLanguageMod);
 	}
 };
 
